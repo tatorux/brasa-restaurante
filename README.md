@@ -1,24 +1,32 @@
-# BRASA — Demostración comercial de Vexel Graphics
+# BRASA · Aplicación de pedidos v2
 
-Proyecto independiente en español, adaptable a la identidad de cada cliente. HTML, CSS y JavaScript sin dependencias de compilación. Las fotografías fueron generadas para este proyecto. Las marcas y precios son ficticios.
+Demostración comercial por Vexel Graphics. Navegación diseñada para móvil, carta interactiva, carrito persistente y gestión local de pedidos. Identidad cálida en crema, naranja y verde oliva.
 
-## Organización
-- index.html: estructura, marca, textos y navegación.
-- style.css: diseño responsive y variables de color.
-- app.js: catálogo y comportamiento.
-- Imágenes WebP en la raíz: imágenes originales.
+**Página:** https://tatorux.github.io/brasa-restaurante/
 
-## Uso
-Abrir index.html para una demostración local o publicar la carpeta del proyecto en un alojamiento estático. El botón de flecha del encabezado abre la administración demo. No tiene contraseña: está pensado para presentaciones, no para datos reales.
+## Recorridos
+- Carta con búsqueda, categorías y favoritos.
+- Personalización: acompañamiento, extras, cantidad y notas.
+- Carrito con entrega en mesa, recogida o domicilio de ejemplo ($4.500 COP).
+- Checkout con datos de prueba, validación y total desglosado.
+- Historial, detalle del pedido, repetición y simulación de estados.
+- Club: cada 5 pedidos entregados habilita 15% de descuento en productos; reglas ilustrativas, sin valor real.
+- Perfil, exportación/importación JSON con validación y confirmación.
+- Administración en `#admin`: estados y disponibilidad de productos.
 
-## Alcance y límites
-Los registros se guardan en localStorage del navegador. No se sincronizan con otros dispositivos. No hay cobros, envío de mensajes, usuarios reales ni conexión con caja o calendario externos. Las recompensas son ilustrativas. Borrar los datos del navegador elimina los registros. No introducir datos personales reales en la demostración.
+## Archivos
+`index.html`, `style.css`, `app.js`: entrada, interfaz y lógica. `icon.svg` y `app.webmanifest`: identidad y modo de visualización standalone en navegadores compatibles. Las imágenes WebP están en la raíz. No requiere compilación. Puede abrirse con un servidor estático o GitHub Pages.
 
-## Personalizar
-Cambiar la marca y textos en index.html; colores en las variables del body; precios, servicios y productos en los arreglos de app.js; reemplazar las imágenes en la raíz manteniendo los nombres. La tipografía usa fuentes del sistema y Georgia, sin dependencias externas.
+## Personalización
+Productos y adicionales en `products`, tarifa demo en `delivery()`, colores en `:root`, identidad en `shell()`. Mantener los identificadores al cambiar textos. Los precios siempre deben volver a validarse en servidor en la versión operativa.
 
-## Antes de vender como sistema operativo
-Conectar base de datos compartida, autenticación del personal, permisos por negocio, validación de precios y disponibilidad en servidor, copias de seguridad y políticas de tratamiento de datos. Configurar cuentas propias para WhatsApp y pagos cuando se contraten. En barbería, resolver las reservas concurrentes con transacciones del servidor; la protección local actual solo sirve para demostración.
+## Datos y límites
+Guarda en `localStorage` bajo `brasa-v2`, separado de la primera versión. No requiere contraseña y no tiene usuarios reales. No procesa pagos, no envía pedidos, no manda WhatsApp y no comparte registros entre dispositivos. Usa datos ficticios. Las pestañas del mismo navegador reciben actualizaciones locales; esto no sustituye una base de datos.
 
-## Verificación realizada
-Comprobación sintáctica con Node, prueba de cálculo del carrito y filtro de catálogo; prueba de solapamientos, cierre de jornada, bloqueos y liberación de citas canceladas. No se realizó inspección visual con navegador en este entorno.
+Los registros de la versión inicial (`brasa-orders`) no se migran: pertenecen a otra estructura de demostración. El nuevo historial comienza vacío.
+
+## Para producción
+Autenticación, roles, base de datos compartida, validación de catálogo/precios/descuentos en servidor, transacciones de inventario, idempotencia de pedidos, manejo de fallos y respaldos, cumplimiento de tratamiento de datos y proveedores de mensajes/pagos configurados por el negocio. El panel demo abierto no se debe usar para operar datos reales.
+
+## Validación v2
+Node: sintaxis, cálculo del carrito, domicilio, recompensas y su restitución al cancelar, filtros, búsquedas vacías, renderizado de pantallas y existencia de recursos. Inspección final de la página publicada en navegador. La maqueta tiene reglas responsive para móvil, tableta y escritorio; no equivale a una prueba en todos los dispositivos físicos.
